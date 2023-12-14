@@ -4,6 +4,7 @@ let foodX, foodY;
 let headX = 12, headY = 12;
 let velocityX = 0, velocityY = 0;
 let endboardXY = [0, 26];
+let snakeBody = [];
 
 function generateFood() {
     foodX = Math.floor(Math.random()*25) + 1;
@@ -25,9 +26,14 @@ function renderGame() {
 
     headX += velocityX;
     headY += velocityY;
+    snakeBody.unshift([headX, headY]);
     
     if(endboardXY.includes(headX) || endboardXY.includes(headY)) {
         gameOver();
+    }
+
+    for(let i=0; i<snakeBody.length; i++) {
+        updatedGame += `<div class="snake" style="grid-area: ${snakeBody[i][1]}/${snakeBody[i][0]};"></div>`;
     }
 
     updatedGame += `<div class="snake" style="grid-area: ${headY}/${headX};"></div>`;
