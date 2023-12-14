@@ -43,6 +43,10 @@ body {
 }
 
 .food {
-    background-color: lightgreen;
-    border-radius: 50%;
+    background-color: lightcoral;
+}
+
+.snake {
+    background-color: green;
+    border-radius: 40%;
 }
