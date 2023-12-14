@@ -9,7 +9,11 @@ let snakeBody = [];
 function generateFood() {
     foodX = Math.floor(Math.random()*25) + 1;
     foodY = Math.floor(Math.random()*25) + 1;
-
+    for(let i = 0; i < snakeBody.length; i++) {
+        if(snakeBody[i][1] == foodY, snakeBody[i][0] == foodX) {
+            generateFood();
+        }
+    }
 }
 
 function gameOver() {
@@ -26,6 +30,7 @@ function renderGame() {
 
     if(foodX == headX && foodY == headY) {
         snakeBody.push(foodX, foodY);
+        generateFood();
     }
 
     headX += velocityX;
@@ -37,7 +42,13 @@ function renderGame() {
         gameOver();
     }
 
-    for(let i=0; i<snakeBody.length; i++) {
+    for(let i = 0; i < snakeBody.length; i++) {
+        if(snakeBody[0][0] == snakeBody[i][0] || snakeBody[0][1] == snakeBody[i][1]){
+            gameOver();
+        }
+    }
+
+    for(let i = 0; i < snakeBody.length; i++) {
         updatedGame += `<div class="snake" style="grid-area: ${snakeBody[i][1]}/${snakeBody[i][0]};"></div>`;
     }
 
