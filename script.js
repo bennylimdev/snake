@@ -4,15 +4,15 @@ let foodX;
 let foodY;
 
 function generateFood() {
-    foodX = Math.floor(Math.random()*25);
-    foodY = Math.floor(Math.random()*25);
+    foodX = Math.floor(Math.random()*25) + 1;
+    foodY = Math.floor(Math.random()*25) + 1;
 
 }
 function renderGame() {
-    let updatedGame = `<div class="food" style="grid-area: 25/5;"></div>`;
+    let updatedGame = `<div class="food" style="grid-area: ${foodY}/${foodX};"></div>`;
 
     gameContainer.innerHTML = updatedGame;
 }
 
-renderGame();
 generateFood();
+renderGame();
