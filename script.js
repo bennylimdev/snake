@@ -28,16 +28,16 @@ setInterval(renderGame, 150);
 document.addEventListener("keydown", function(e){
     console.log(e.key);
     let key = e.key;
-    if(key == "w") {
+    if(key == "w" && velocityY!=1) {
         velocityX = 0;
         velocityY = -1;
-    } else if(key == "s") {
+    } else if(key == "s" && velocityY!=-1) {
         velocityX = 0;
         velocityY = 1;
-    } else if(key == "a") {
+    } else if(key == "a" && velocityX!=1) {
         velocityY = 0;
         velocityX = -1;
-    } else if(key =="d") {
+    } else if(key =="d" && velocityX!=-1) {
         velocityY = 0;
         velocityX = 1;
     }
