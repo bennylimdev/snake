@@ -33,3 +33,10 @@ body {
     font-size: 16px;
     color: lightgreen;
 }
+
+.game-container {
+    height: 36rem;
+    width: 36rem;
+    display: grid;
+    grid-template: repeat(25, 1fr) / repeat(25, 1fr);
+}
