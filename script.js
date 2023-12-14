@@ -24,11 +24,15 @@ function gameOver() {
 function renderGame() {
     let updatedGame = `<div class="food" style="grid-area: ${foodY}/${foodX};"></div>`;
 
+    if(foodX == headX && foodY == headY) {
+        snakeBody.push(foodX, foodY);
+    }
+
     headX += velocityX;
     headY += velocityY;
     snakeBody.unshift([headX, headY]);
     snakeBody.pop();
-    
+
     if(endboardXY.includes(headX) || endboardXY.includes(headY)) {
         gameOver();
     }
