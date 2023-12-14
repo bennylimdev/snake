@@ -27,6 +27,7 @@ function renderGame() {
     headX += velocityX;
     headY += velocityY;
     snakeBody.unshift([headX, headY]);
+    snakeBody.pop();
     
     if(endboardXY.includes(headX) || endboardXY.includes(headY)) {
         gameOver();
