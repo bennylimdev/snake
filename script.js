@@ -1,10 +1,12 @@
-let gameContainer = document.querySelector(".game-container")
+let gameContainer = document.querySelector(".game-container");
+let scoreContainer = document.querySelector(".score-container");
 
 let foodX, foodY;
 let headX = 12, headY = 12;
 let velocityX = 0, velocityY = 0;
 let endboardXY = [0, 26];
 let snakeBody = [];
+let score = 0;
 
 function generateFood() {
     foodX = Math.floor(Math.random()*25) + 1;
@@ -22,8 +24,10 @@ function gameOver() {
     generateFood();
     velocityX = 0;
     velocityY = 0;
-    alert("Game Over");
     snakeBody = [];
+    score = 0;
+    scoreContainer.innerHTML = "Score : " + score;
+    alert("Game Over");
 }
 
 function renderGame() {
@@ -32,6 +36,8 @@ function renderGame() {
     if(foodX == headX && foodY == headY) {
         snakeBody.push(foodX, foodY);
         generateFood();
+        score += 100;
+        scoreContainer.innerHTML = "Score : " + score;
     }
 
     headX += velocityX;
