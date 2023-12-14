@@ -3,11 +3,21 @@ let gameContainer = document.querySelector(".game-container")
 let foodX, foodY;
 let headX = 12, headY = 12;
 let velocityX = 0, velocityY = 0;
+let endboardXY = [0, 26];
 
 function generateFood() {
     foodX = Math.floor(Math.random()*25) + 1;
     foodY = Math.floor(Math.random()*25) + 1;
 
+}
+
+function gameOver() {
+    headX = 12;
+    headY = 12;
+    generateFood();
+    velocityX = 0;
+    velocityY = 0;
+    alert("Game Over");
 }
 
 function renderGame() {
@@ -16,6 +26,10 @@ function renderGame() {
     headX += velocityX;
     headY += velocityY;
     
+    if(endboardXY.includes(headX) || endboardXY.includes(headY)) {
+        gameOver();
+    }
+
     updatedGame += `<div class="snake" style="grid-area: ${headY}/${headX};"></div>`;
 
     gameContainer.innerHTML = updatedGame;
